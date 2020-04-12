@@ -23,10 +23,10 @@ class NyanCodes {
 
     'Prepare' => 'fp',
     'StartMove' => 'fm',
-    'NewClient' => 'fn',
 
     'SessionStarted' => 'ss',
-    'SessionConnected' => 'sc',
+    'SessionNewUser' => 'sc',
+    'SessionLostUser' => 'sd',
     'SettingsUpdate' => 'su',
     'SessionTerminated' => 'se',
   ];
