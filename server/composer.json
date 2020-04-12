@@ -1,0 +1,22 @@
+{
+    "name": "leamare/endless-nyan-server",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "": "src/",
+            "Leamare\\ENyan\\": "src/"
+        }
+    },
+    "require": {
+        "react/react": "^1.0",
+        "react/partial": "^3.0",
+        "cboden/ratchet": "^0.4.2"
+    },
+    "license": "GPL-v3",
+    "authors": [
+        {
+            "name": "Eli Silakov",
+            "email": "me@ileamare.ru"
+        }
+    ]
+}
