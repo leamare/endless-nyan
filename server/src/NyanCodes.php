@@ -15,6 +15,7 @@ class NyanCodes {
     'HitEdge' => 'he',
     'Hidden' => 'hh',
     'Pause' => 'pp',
+    'Unpause' => 'pu',
 
     //
     'SessionSettings' => 'st',

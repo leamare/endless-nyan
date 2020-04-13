@@ -46,6 +46,8 @@ class Controller implements MessageComponentInterface {
         case NyanCodes::MsgCodes['ApproachingEdge']:
         case NyanCodes::MsgCodes['HitEdge']:
         case NyanCodes::MsgCodes['Hidden']:
+        case NyanCodes::MsgCodes['Pause']:
+        case NyanCodes::MsgCodes['Unpause']:
           $this->reportStatus($from, $m['msg']);
 
           break;
@@ -142,6 +144,11 @@ class Controller implements MessageComponentInterface {
           'event' => 'Prepare',
         ]);
         $next->send($m);
+
+        break;
+      case NyanCodes::MsgCodes['Pause']:
+      case NyanCodes::MsgCodes['Unpause']:
+        $s->notifyAll($type);
 
         break;
       case NyanCodes::MsgCodes['HitEdge']:
