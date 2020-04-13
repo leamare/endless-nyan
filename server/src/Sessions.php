@@ -10,13 +10,16 @@ class Sessions {
   public function new() {
     $nm = $this->generateSessionName();
     $this->sessions[$nm] = new Session();
+
     return $nm;
   }
 
   public function get(string $name) {
-    if (isset($this->sessions[$name]))
+    if (isset($this->sessions[$name])) {
       return $this->sessions[$name];
-    throw new \Exception("No session $name");
+    }
+
+    throw new \Exception("No session ${name}");
   }
 
   public function is(string $name) {
@@ -24,15 +27,18 @@ class Sessions {
   }
 
   public function close(string $name) {
-    if (isset($this->sessions[$name]))
+    if (isset($this->sessions[$name])) {
       unset($this->sessions[$name]);
+    }
   }
 
   public function findSessionByConn(ConnectionInterface $conn) {
     foreach ($this->sessions as $id => $s) {
-      if ($s->isClient($conn))
+      if ($s->isClient($conn)) {
         return $id;
+      }
     }
+
     return null;
   }
 

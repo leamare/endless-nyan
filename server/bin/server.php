@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 
 use Ratchet\Server\IoServer;
 use Ratchet\Http\HttpServer;
@@ -18,7 +19,7 @@ if ($config['ws']) {
   $server = IoServer::factory(
     new HttpServer(
         new WsServer(
-          new Controller( new Sessions() )
+          new Controller(new Sessions())
         )
     ),
     $config['port']
@@ -26,7 +27,7 @@ if ($config['ws']) {
 } else {
   echo("[ ] Starting simple sockets server!\n");
   $server = IoServer::factory(
-    new Controller( new Sessions() ),
+    new Controller(new Sessions()),
     $config['port']
   );
 }

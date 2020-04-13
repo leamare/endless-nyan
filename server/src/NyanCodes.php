@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Leamare\ENyan;
 
@@ -14,8 +14,9 @@ class NyanCodes {
     'ApproachingEdge' => 'ae',
     'HitEdge' => 'he',
     'Hidden' => 'hh',
+    'Pause' => 'pp',
 
-    // 
+    //
     'SessionSettings' => 'st',
 
     // Server responses
@@ -36,10 +37,11 @@ class NyanCodes {
     $code = array_shift($args);
     $r = [];
 
-    foreach(NyanCodes::MsgCodes as $event => $c) {
+    foreach (self::MsgCodes as $event => $c) {
       if ($code === $c) {
         $r['event'] = $event;
         $r['msg'] = $c;
+
         break;
       }
     }
@@ -54,11 +56,13 @@ class NyanCodes {
   }
 
   public static function encodeMsg(array $msg): string {
-    if (!isset(NyanCodes::MsgCodes[$msg['event']]))
+    if (!isset(self::MsgCodes[$msg['event']])) {
       throw new \Exception("No event {$msg['event']}");
+    }
     
     $r = $msg['params'] ?? [];
-    array_unshift($r, NyanCodes::MsgCodes[$msg['event']]);
+    array_unshift($r, self::MsgCodes[$msg['event']]);
+
     return implode(':', $r);
   }
 }
