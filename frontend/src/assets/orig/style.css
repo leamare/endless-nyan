@@ -1,0 +1,13 @@
+.orig-cat {
+  background-image: url('assets/orig/bg.gif');
+}
+
+.orig-cat .runner {
+  background-image: url('assets/orig/agent.gif');
+}
+
+.topmenu {
+  height: 5vmin;
+  overflow-x: auto;
+  background-color: rgba(0,0,0,0.3);
+}
