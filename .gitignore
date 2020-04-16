@@ -4,3 +4,6 @@ server/config.json
 .php_cs.cache
 server/.php_cs.cache
 *.php_cs.cache
+frontend/node_modules/
+frontend/build/
+frontend/config.json
