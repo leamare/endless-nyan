@@ -7,8 +7,6 @@ var gulp       = require('gulp'),
 
 
 gulp.task('vendor', function() {
-  config.vendor.src = config.createVendorList();
-
   return gulp.src(config.vendor.src)
     .pipe(plumber())
     .pipe(concat(config.vendor.name))

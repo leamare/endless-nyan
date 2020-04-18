@@ -10,11 +10,12 @@ body {
 .nyanner {
   position: absolute;
   top: calc(50% - 10.5vmin);
-  /* left: calc(-50vw + 17vmin); */
-  right: calc(50vw - 17vmin);
+  left: calc(-50vw + 17vmin);
+  /* right: calc(50vw - 17vmin); */
   height: 42vmin;
   width: 100vw;
   z-index: 2;
+  /* transition: 280ms linear all; */
 }
 
 .runner {
