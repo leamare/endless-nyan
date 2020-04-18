@@ -2,7 +2,8 @@
 
 let config  = require('./config.json');
 
-const __BUILDID__ = (+new Date).toString(36);
+const __BUILDID__ = (+new Date).toString(36),
+      __NYANSRV__ = 'ws://127.0.0.1:8080/';
 
 var src   = './src/',
     build = './build/';
@@ -41,7 +42,9 @@ module.exports = {
   }),
 
   vendor: {
-    src: [],
+    src: [
+      './node_modules/howler/dist/howler.core.min.js'
+    ],
     dest: build,
     name: 'vendor.js'
   },
@@ -58,6 +61,7 @@ module.exports = {
     name: 'bundle.js',
     buildConfig: {
       buildId: __BUILDID__,
+      nyansrv: __NYANSRV__
     },
   },
 

@@ -16,7 +16,7 @@ gulp.task('build', (done) => {
     'clean',
     gulp.parallel(
       'styles',
-      //'vendor',
+      'vendor',
       'scripts',
       'templates',
       'images',
