@@ -1,13 +1,42 @@
 .orig-cat {
   background-image: url('assets/orig/bg.gif');
+  /* background-image: linear-gradient(to left, rgba(0,0,0,1), 70%, rgba(255,255,255,1)); */
+  image-rendering: pixelated;
 }
 
 .orig-cat .runner {
   background-image: url('assets/orig/agent.gif');
+  image-rendering: pixelated;
+  animation: origCatAnim .7s linear infinite;
+  height: 21vmin;
+  width: 34vmin;
 }
 
-.topmenu {
-  height: 5vmin;
-  overflow-x: auto;
-  background-color: rgba(0,0,0,0.3);
+.orig-cat .trail {
+  background-image: url('assets/orig/trail.gif');
+  mix-blend-mode: hard-light;
+  image-rendering: pixelated;
+  mask-image: linear-gradient(to left, rgba(0,0,0,1), 50%, rgba(0,0,0,0));
+  -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1), 50%, rgba(0,0,0,0));
+  mask-size: 100%;
+  -webkit-mask-size: 100%;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  animation: backgroundScrollOrigTrail 1.4s linear infinite;
+
+  height: 21vmin;
+  width: 96vmin;
+  margin-right: 23vmin;
+}
+
+@keyframes backgroundScrollOrigTrail {
+  from {background-position: 0 0;}
+  to {background-position: -50% 0;}
+}
+
+@keyframes origCatAnim {
+  0% {margin-right: 0;}
+  50% {margin-right: 2vmin;}
+  75% {margin-right: 3vmin;}
+  100% {margin-right: 0;}
 }

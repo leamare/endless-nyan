@@ -3,16 +3,53 @@ body {
   background-size: 50%;
   padding: 0;
   margin: 0;
+  overflow: hidden;
+  animation: backgroundScroll .84s linear infinite;
+}
+
+.nyanner {
+  position: absolute;
+  top: calc(50% - 10.5vmin);
+  /* left: calc(-50vw + 17vmin); */
+  right: calc(50vw - 17vmin);
+  height: 42vmin;
+  width: 100vw;
+  z-index: 2;
 }
 
 .runner {
   position: absolute;
   padding: 0;
   margin: 0;
-  top: calc(50% - 15vmin);
-  height: 30vmin;
-  width: 50vmin;
+  /* top: calc(50% - 21vmin); */
+  right: 0;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  z-index: 2;
+}
+
+.trail {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  right: 0;
+  /* top: calc(50% - 19vmin); */
+  margin-top: 1vmin;
+  background-size: contain;
+  background-repeat: repeat-x;
+  background-position: right;
+  z-index: 1;
+}
+
+
+.topmenu {
+  height: 5vmin;
+  overflow-x: auto;
+  background-color: rgba(0,0,0,0.3);
+}
+
+@keyframes backgroundScroll {
+  from {background-position: 0 0;}
+  to {background-position: -100% 0;}
 }
