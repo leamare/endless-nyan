@@ -55,7 +55,10 @@ module.exports = {
       src + 'js/*.js',
     ],
     dest: build,
-    name: 'bundle.js'
+    name: 'bundle.js',
+    buildConfig: {
+      buildId: __BUILDID__,
+    },
   },
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
