@@ -5,19 +5,26 @@ function Nyanner(elem, server) {
   this.el = elem;
   this.moveTimer = null;
 
-  this.status = 'waiting';
+  this.status = 'idle';
 
   this.audio = new Howl({
     preload: true,
     loop: true,
-    src: [`assets/${server.type || 'orig'}/nyan.mp3`]
+    src: [`assets/${server.type || 'default'}/nyan.mp3`]
   });
 
-  this.speed = 0.1;
+  this.paused = false;
+  this.mvAfterHidden = false;
+
+  this.speed = 0.5;
   this.timer = 40;
 
-  this.beginAudio = new Audio(`assets/${server.type || 'orig'}/begin.mp3`);
+  this.beginAudio = new Audio(`assets/${server.type || 'default'}/begin.mp3`);
   this.beginAudio.load();
+
+  this.idleReset = () => {
+    this.el.style.left = undefined;
+  }
 
   this.init = () => {
     // play init music
@@ -37,14 +44,18 @@ function Nyanner(elem, server) {
   }
 
   let runnerFunc = () => {
+    if (this.status === 'waiting') {
+      return;
+    }
     let val = (+this.el.style.left.replace('%', ''))+this.speed;
     if (val > 80 && this.status === 'over') {
       this.hidden();
-    } else if (-val < this.speed && this.status === 'approaching') {
+    } else if (-val < this.speed * 0.2 && this.status === 'approaching') {
       this.hitEdge();
-    } else if (-val < this.speed * this.timer * 1.3 && this.status === 'running') {
+    } else if (-val < this.speed * this.timer && this.status === 'running') {
       this.approachingEdge();
-    } 
+    }
+    
     this.el.style.left = val+'%';
   };
 
@@ -61,11 +72,14 @@ function Nyanner(elem, server) {
   }
 
   this.stopMovement = () => {
-    this.el.style.left = '-105%';
     if (this.moveTimer) {
       clearInterval(this.moveTimer);
       this.moveTimer = null;
     }
+    setTimeout(() => {
+      if (this.status !== 'idle')
+        this.el.style.left = '-100.5%';
+    }, 1);
   }
 
   this.startRunning = (fade = false) => {
@@ -104,7 +118,12 @@ function Nyanner(elem, server) {
     console.log('completely hidden');
     this.srv.event('hidden');
     this.status = 'waiting';
+    console.log('???');
     this.stopMovement();
+    if (this.mvAfterHidden) {
+      this.mvAfterHidden = false;
+      this.startRunning(true);
+    }
   }
 
   this.pause = () => {
