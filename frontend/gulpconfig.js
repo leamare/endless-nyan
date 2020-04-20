@@ -3,7 +3,7 @@
 let config  = require('./config.json');
 
 const __BUILDID__ = (+new Date).toString(36),
-      __NYANSRV__ = 'ws://127.0.0.1:8080/';
+      __NYANSRV__ = config.srv;
 
 var src   = './src/',
     build = './build/';
