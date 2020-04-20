@@ -18,6 +18,7 @@ class Controller implements MessageComponentInterface {
 
   public function onMessage(ConnectionInterface $from, $msg) {
     // echo("[M] {$this->createConnIdString($conn)} says `$msg`\n");
+    //echo $this->createConnIdString($from)."\n";
     
     try {
       $m = NyanCodes::decodeMsg($msg);
@@ -41,6 +42,15 @@ class Controller implements MessageComponentInterface {
           break;
         case NyanCodes::MsgCodes['SessionSettings']:
           $this->updateSettings($from, $m['params']);
+
+          break;
+        case NyanCodes::MsgCodes['SyncData']:
+          $this->syncData($from, $m);
+
+          break;
+        case NyanCodes::MsgCodes['Pause']:
+        case NyanCodes::MsgCodes['Unpause']:
+          $this->pause($from, $m['msg']);
 
           break;
         case NyanCodes::MsgCodes['ApproachingEdge']:
@@ -84,10 +94,10 @@ class Controller implements MessageComponentInterface {
     $ssid = $this->sessions->new();
     echo("[ ] Started session ${ssid}\n");
 
-    $this->sessions->get($ssid)->connect($src);
+    $code = $this->sessions->get($ssid)->connect($src);
     $m = NyanCodes::encodeMsg([
       'event' => 'SessionStarted',
-      'params' => [ $ssid ],
+      'params' => [ $ssid, $code ],
     ]);
     $src->send($m);
     //echo("[M] Sent `$m` to {$this->createConnIdString($src)}\n");
@@ -100,7 +110,18 @@ class Controller implements MessageComponentInterface {
 
       return;
     }
-    $this->sessions->get($ssid)->connect($src);
+
+    $code = $this->sessions->get($ssid)->connect($src);
+    $m = NyanCodes::encodeMsg([
+      'event' => 'JoinSession',
+      'params' => [ $ssid, $code ],
+    ]);
+    $src->send($m);
+    $m = NyanCodes::encodeMsg([
+      'event' => 'SyncRequest',
+      'params' => [ ],
+    ]);
+    $this->sessions->get($ssid)->getOwner()->send($m);
   }
 
   private function endSession(ConnectionInterface &$src) {
@@ -136,14 +157,16 @@ class Controller implements MessageComponentInterface {
     if (!$s->isActive($src)) {
       return;
     }
+    error_log($type);
 
     switch ($type) {
       case NyanCodes::MsgCodes['ApproachingEdge']:
         $next = $s->getNext($src);
+        $code = $s->clientCode($next);
         $m = NyanCodes::encodeMsg([
           'event' => 'Prepare',
         ]);
-        $next->send($m);
+        $next->send($m.'|'.$code);
 
         break;
       case NyanCodes::MsgCodes['Pause']:
@@ -153,10 +176,11 @@ class Controller implements MessageComponentInterface {
         break;
       case NyanCodes::MsgCodes['HitEdge']:
         $next = $s->getNext($src);
+        $code = $s->clientCode($next);
         $m = NyanCodes::encodeMsg([
           'event' => 'StartMove',
         ]);
-        $next->send($m);
+        $next->send($m.'|'.$code);
         $s->active($next);
 
         break;
@@ -178,6 +202,39 @@ class Controller implements MessageComponentInterface {
     $m = NyanCodes::encodeMsg([
       'event' => 'SettingsUpdate',
       'params' => $params,
+    ]);
+    $s->notifyAll($m);
+  }
+
+  private function syncData(ConnectionInterface &$src, array $msg) {
+    $ssid = $this->sessions->findSessionByConn($src);
+    if (!$ssid) {
+      return;
+    }
+    $owner = $this->sessions->get($ssid)->getOwner();
+    if ($this->createConnIdString($owner) !== $this->createConnIdString($src)) {
+      $this->sendError($src);
+    }
+
+    $s = $this->sessions->get($ssid);
+    $m = NyanCodes::encodeMsg($msg);
+    $s->notifyAll($m);
+  }
+
+  private function pause(ConnectionInterface &$src, string $msg) {
+    $ssid = $this->sessions->findSessionByConn($src);
+    if (!$ssid) {
+      return;
+    }
+    $owner = $this->sessions->get($ssid)->getOwner();
+    if ($this->createConnIdString($owner) !== $this->createConnIdString($src)) {
+      $this->sendError($src);
+    }
+
+    $s = $this->sessions->get($ssid);
+    $m = NyanCodes::encodeMsg([
+      'event' => $msg,
+      'params' => [],
     ]);
     $s->notifyAll($m);
   }

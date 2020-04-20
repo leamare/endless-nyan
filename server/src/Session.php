@@ -6,6 +6,7 @@ use Ratchet\ConnectionInterface;
 
 class Session {
   private $clients = [];
+  private $codes = [];
 
   private $params = [];
 
@@ -19,18 +20,26 @@ class Session {
     if (empty($this->clients)) {
       $this->active = $nm;
     }
-    $this->clients[$nm] = $client;
 
     $m = NyanCodes::encodeMsg([
       'event' => 'SessionNewUser',
     ]);
     $this->notifyAll($m);
+
+    $this->clients[$nm] = $client;
+    $this->codes[$nm] = rand(0, 99);
+
+    $m = NyanCodes::encodeMsg([
+      'event' => 'JoinSession',
+    ]);
+    return $this->codes[$nm];
   }
 
   public function disconnect(ConnectionInterface $client) {
     $nm = $this->createConnIdString($client);
     if (isset($this->clients[$nm])) {
       unset($this->clients[$nm]);
+      unset($this->codes[$nm]);
     }
     
     $m = NyanCodes::encodeMsg([
@@ -66,6 +75,12 @@ class Session {
     return isset($this->clients[$nm]);
   }
 
+  public function clientCode(ConnectionInterface $client) {
+    $nm = $this->createConnIdString($client);
+
+    return $this->codes[$nm] ?? false;
+  }
+
   public function getOwner() {
     return array_values($this->clients)[0];
   }
@@ -92,12 +107,15 @@ class Session {
     }
     $arrk = array_keys($this->clients);
     $key = array_search($nm, $arrk);
+    
     $sz = sizeof($arrk);
     if ($key < $sz-1) {
-      return $this->clients[$arrk[$key+1]];
+      $resk = $key+1;
+    } else {
+      $resk = 0;
     }
 
-    return $this->clients[$arrk[0]];
+    return $this->clients[$arrk[$resk]];
   }
 
   public function notifyAll(string $msg) {

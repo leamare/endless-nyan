@@ -31,6 +31,9 @@ class NyanCodes {
     'SessionLostUser' => 'sd',
     'SettingsUpdate' => 'su',
     'SessionTerminated' => 'se',
+    
+    'SyncRequest' => 'ct',
+    'SyncData' => 'sy',
   ];
 
   public static function decodeMsg(string $msg): array {
