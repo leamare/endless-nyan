@@ -143,7 +143,14 @@ class Controller implements MessageComponentInterface {
     }
     $s = $this->sessions->get($ssid);
     $s->disconnect($src);
-    if (!$s->getClientsNum()) {
+    if ($s->getClientsNum()) {
+      $state = $s->isActive($src);
+      if (!$state) {
+        $this->reportStatus($src, NyanCodes::MsgCodes['HitEdge']);
+      }
+      $s->disconnect($src);
+    } else {
+      $s->disconnect($src);
       $this->sessions->close($ssid);
     }
   }

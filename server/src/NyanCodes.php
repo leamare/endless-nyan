@@ -14,6 +14,7 @@ class NyanCodes {
     'ApproachingEdge' => 'ae',
     'HitEdge' => 'he',
     'Hidden' => 'hh',
+    'Moving' => 'mm',
     'Pause' => 'pp',
     'Unpause' => 'pu',
 
