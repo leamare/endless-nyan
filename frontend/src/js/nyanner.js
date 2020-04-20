@@ -99,7 +99,7 @@ function Nyanner(elem, server) {
   }
 
   this.hitEdge = () => {
-    console.log('hit edge');
+    //console.log('hit edge');
     this.srv.event('edge');
     this.status = 'over';
     this.audio.fade(1, 0, this.timer * (50 / this.speed));
@@ -108,7 +108,7 @@ function Nyanner(elem, server) {
   this.approachingEdge = () => {
     if (this.status === 'approaching')
       return;
-    console.log('approaching edge');
+    //console.log('approaching edge');
     this.srv.event('approaching');
     this.status = 'approaching';
   }
@@ -116,10 +116,9 @@ function Nyanner(elem, server) {
   this.hidden = () => {
     if (this.status === 'waiting')
       return;
-    console.log('completely hidden');
+    //console.log('completely hidden');
     this.srv.event('hidden');
     this.status = 'waiting';
-    console.log('???');
     this.stopMovement();
     if (this.mvAfterHidden) {
       this.mvAfterHidden = false;

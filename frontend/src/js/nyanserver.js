@@ -43,7 +43,6 @@ function NyanServer() {
   }
 
   this.connMsg = (evt) => {
-    console.log(evt.data);
     let cd = evt.data.split('|');
     if (cd[1] !== undefined && +cd[1] != this.code) 
       return;
