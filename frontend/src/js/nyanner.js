@@ -83,10 +83,11 @@ function Nyanner(elem, server) {
   }
 
   this.startRunning = (fade = false) => {
-    if (fade)
+    if (fade) {
       this.audio.fade(0, 1, this.timer * (50 / this.speed));
-    else 
+    } else { 
       this.audio.play();
+    }
     this.srv.event('running'); // set timing for all clients
     this.status = 'running';
     this.startMovement(fade);

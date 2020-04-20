@@ -80,6 +80,10 @@ function NyanServer() {
       this.code = +params[2];
       this.nyanner.stopMovement();
       this.nyanner.status = 'waiting';
+      if (!this.nyanner.audio.playing()) {
+        this.nyanner.audio.volume(0);
+        this.nyanner.audio.play();
+      }
     }
     // session new user
     if (evt.data.indexOf('sc') === 0) {
@@ -107,7 +111,7 @@ function NyanServer() {
     }
     // Sync request
     if (evt.data.indexOf('ct') === 0) {
-      this.conn.send('sy:'+this.nyanner.audio.seek()+':'+this.type);
+      this.sendSync();
     }
 
     // Pause
@@ -131,6 +135,8 @@ function NyanServer() {
       this.conn.send('ae');
     } else if (event === 'hidden') {
       this.conn.send('hh');
+    } else if (event === 'move') {
+      this.sendSync();
     }
   }
 
@@ -153,8 +159,12 @@ function NyanServer() {
     sscont.removeAttribute('disabled');
   }
 
+  this.sendSync = () => {
+    this.conn.send('sy:'+this.nyanner.audio.seek()+':'+this.type);
+  }
+
   this.sync = (time, params) => {
-    this.nyanner.audio.seek(time);
+    this.nyanner.audio.seek(time+.05);
     this.updateSettings(params);
   }
 
