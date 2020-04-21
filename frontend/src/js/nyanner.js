@@ -6,6 +6,7 @@ function Nyanner(elem, server) {
   this.moveTimer = null;
 
   this.status = 'idle';
+  this.maxvol = 1;
 
   this.audio = new Howl({
     preload: true,
@@ -84,7 +85,7 @@ function Nyanner(elem, server) {
 
   this.startRunning = (fade = false) => {
     if (fade) {
-      this.audio.fade(0, 1, this.timer * (50 / this.speed));
+      this.audio.fade(0, this.maxvol, this.timer * (50 / this.speed));
     } else { 
       this.audio.play();
     }
@@ -140,5 +141,11 @@ function Nyanner(elem, server) {
         this.timer
       );
     }
+  }
+
+  this.setVol = (vol) => {
+    let k = this.maxvol/this.audio.volume();
+    this.audio.volume(vol*k);
+    this.maxvol = vol;
   }
 }

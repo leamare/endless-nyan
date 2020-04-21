@@ -1,14 +1,15 @@
+* {
+  padding:0;
+  margin: 0;
+}
+
 body {
   min-height:100%;
-  padding: 0;
-  margin: 0;
 }
 
 .container {
   height: 100%;
   width: 100%;
-  padding: 0;
-  margin: 0;
   overflow: hidden;
   background-size: 50%;
   animation: backgroundScroll .84s linear infinite;
@@ -28,8 +29,6 @@ body {
 
 .runner {
   position: absolute;
-  padding: 0;
-  margin: 0;
   /* top: calc(50% - 21vmin); */
   right: 0;
   background-size: contain;
@@ -40,8 +39,6 @@ body {
 
 .trail {
   position: absolute;
-  padding: 0;
-  margin: 0;
   right: 0;
   /* top: calc(50% - 19vmin); */
   margin-top: 1vmin;
@@ -74,7 +71,7 @@ body {
   cursor: pointer;
 }
 
-.topmenu input {
+.topmenu input[type=text] {
   display: inline-block;
   font-family: sans-serif;
   height: 4.5vmin;
@@ -104,4 +101,41 @@ body {
 }
 .container.primary .action-pause {
   display: inline-block;
+}
+
+.topmenu input[type=slider], .slider {
+  display: inline-block;
+  margin-left: 1vmin;
+  margin-right: 1vmin;
+  font-family: sans-serif;
+  height: 4vmin;
+  line-height: 4vmin;
+  vertical-align: middle;
+  color: #fff;
+  background-color: rgba(22,22,22,0.5);
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4.5vmin;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 1vmin;
+  height: 3vmin;
+  background: #fff;
+  cursor: pointer;
+}
+.slider::-moz-range-thumb {
+  width: 1vmin;
+  height: 3vmin;
+  background: #fff;
+  cursor: pointer;
+}
+
+.slidecontainer {
+  float: right;
 }
