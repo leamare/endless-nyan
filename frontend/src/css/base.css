@@ -55,7 +55,7 @@ body {
 }
 
 .topmenu {
-  height: 5vmin;
+  height:3vmax;
   overflow-x: auto;
   background-color: rgba(0,0,0,0.3);
 }
@@ -63,10 +63,10 @@ body {
 .topmenu div {
   display: inline-block;
   font-family: sans-serif;
-  line-height: 5vmin;
-  font-size: 2vmin;
+  line-height: 3vmax;
+  font-size: 1.5vmax;
   border-right: .5vmin solid rgba(0,0,0,0.5);
-  margin-right: 1vmin;
+  margin-right: .5vmax;
   color: #fff;
   min-width: 10vw;
   cursor: pointer;
@@ -75,11 +75,11 @@ body {
 .topmenu input[type=text] {
   display: inline-block;
   font-family: sans-serif;
-  height: 4.5vmin;
-  line-height: 4.5vmin;
-  font-size: 2vmin;
-  padding-left: 1vw;
-  padding-right: 1vw;
+  height: 2.8vmax;
+  line-height: 2.5vmax;
+  font-size: 1.5vmax;
+  padding-left: 1vmax;
+  padding-right: 1vmax;
   color: #fff;
   background-color: rgba(22,22,22,0.5);
   border: none;
@@ -106,17 +106,17 @@ body {
 
 .topmenu input[type=slider], .slider {
   display: inline-block;
-  margin-left: 1vmin;
-  margin-right: 1vmin;
+  margin-left: .5vmax;
+  margin-right: .5vmax;
   font-family: sans-serif;
-  height: 4vmin;
-  line-height: 4vmin;
+  height: 2.5vmax;
+  line-height: 2.5vmax;
   vertical-align: middle;
   color: #fff;
   background-color: rgba(22,22,22,0.5);
   -webkit-appearance: none;
   appearance: none;
-  height: 4.5vmin;
+  height: 2.5vmax;
   outline: none;
   opacity: 0.7;
   -webkit-transition: .2s;
@@ -139,4 +139,22 @@ body {
 
 .slidecontainer, .action-question {
   float: right;
+}
+
+.infobox {
+  position:absolute;
+  z-index: 5;
+  background-color: rgba(0,0,0,0.5);
+  color: #fff;
+  font-size: 1.5vmax;
+  line-height: 2.5vmax;
+  font-family: sans-serif;
+  padding: 2.5vw;
+  top: 10vh;
+  width: 65vw;
+  left: 15vw;
+  display: none;
+}
+.infobox a {
+  color: #fff;
 }

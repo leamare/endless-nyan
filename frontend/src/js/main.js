@@ -8,7 +8,10 @@ document.getElementsByClassName('action-connector')[0].onclick = () => srv.ns();
 document.getElementsByClassName('action-disconnect')[0].onclick = () => srv.leave();
 document.getElementsByClassName('action-pause')[0].onclick = () => srv.pause();
 document.getElementsByClassName('action-question')[0].onclick = () => {
-  alert('This is nyan cat that runs from one screen to another. Create a session, give your code to friends so they join you. Start moving! https://github.com/leamare/endless-nyan')
+  document.getElementsByClassName('infobox')[0].style.display = 'block';
+};
+document.getElementsByClassName('close-infobox')[0].onclick = () => {
+  document.getElementsByClassName('infobox')[0].style.display = 'none';
 };
 document.getElementsByClassName('slider')[0].onchange = (e) => {
   let vol = +e.target.value/100;
