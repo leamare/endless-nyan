@@ -168,7 +168,6 @@ class Controller implements MessageComponentInterface {
     if (!$s->isActive($src)) {
       return;
     }
-    error_log($type);
 
     switch ($type) {
       case NyanCodes::MsgCodes['ApproachingEdge']:
