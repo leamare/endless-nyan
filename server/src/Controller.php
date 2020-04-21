@@ -149,7 +149,7 @@ class Controller implements MessageComponentInterface {
     $s->disconnect($src);
     if ($s->getClientsNum()) {
       $state = $s->isActive($src);
-      if (!$state) {
+      if ($state) {
         $this->reportStatus($src, NyanCodes::MsgCodes['HitEdge']);
       }
       $s->disconnect($src);
