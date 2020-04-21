@@ -20,8 +20,11 @@ function Nyanner(elem, server) {
   this.speed = 0.5;
   this.timer = 40;
 
-  this.beginAudio = new Audio(`assets/${server.type || 'default'}/begin.mp3`);
-  this.beginAudio.load();
+  this.beginAudio = new Howl({
+    preload: true,
+    loop: false,
+    src: [`assets/${server.type || 'default'}/begin.mp3`]
+  });
 
   this.idleReset = () => {
     this.el.style.left = undefined;
@@ -33,15 +36,11 @@ function Nyanner(elem, server) {
     this.stopNyan();
     this.el.style.left = '-80%';
     
+    this.beginAudio.volume(this.maxvol);
     this.beginAudio.play();
-    this.beginAudio.addEventListener('timeupdate', () => {
-      const buffer = .27;
-      if (this.beginAudio.currentTime > this.beginAudio.duration - buffer) {
-        this.startRunning();
-        this.beginAudio.pause();
-        this.beginAudio.currentTime = 0;
-      }
-    });
+    this.beginAudio.on('end', () => {
+      this.startRunning();
+    })
   }
 
   let runnerFunc = () => {
@@ -103,7 +102,7 @@ function Nyanner(elem, server) {
     //console.log('hit edge');
     this.srv.event('edge');
     this.status = 'over';
-    this.audio.fade(1, 0, this.timer * (50 / this.speed));
+    this.audio.fade(this.audio.volume(), 0, this.timer * (50 / this.speed));
   }
 
   this.approachingEdge = () => {

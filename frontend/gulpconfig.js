@@ -3,6 +3,7 @@
 let config  = require('./config.json');
 
 const __BUILDID__ = (+new Date).toString(36),
+      __VERSION__ = '1.1.0',
       __NYANSRV__ = config.srv;
 
 var src   = './src/',
@@ -61,7 +62,8 @@ module.exports = {
     name: 'bundle.js',
     buildConfig: {
       buildId: __BUILDID__,
-      nyansrv: __NYANSRV__
+      nyansrv: __NYANSRV__,
+      version: __VERSION__
     },
   },
 
