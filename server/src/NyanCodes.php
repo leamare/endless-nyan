@@ -17,6 +17,7 @@ class NyanCodes {
     'Moving' => 'mm',
     'Pause' => 'pp',
     'Unpause' => 'pu',
+    'Ping' => 'pi',
 
     //
     'SessionSettings' => 'st',

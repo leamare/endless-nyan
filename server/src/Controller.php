@@ -53,6 +53,10 @@ class Controller implements MessageComponentInterface {
           $this->pause($from, $m['msg']);
 
           break;
+        case NyanCodes::MsgCodes['Ping']:
+          $from->send($m['msg']);
+
+          break;
         case NyanCodes::MsgCodes['ApproachingEdge']:
         case NyanCodes::MsgCodes['HitEdge']:
         case NyanCodes::MsgCodes['Hidden']:

@@ -1,6 +1,8 @@
 function NyanServer() {
   //this.type = 'default';
   this.conn = new WebSocket(__nyansrv__);
+  setInterval(() => this.conn.send('pi'), 5000);
+
   this.session = null;
   this.container = document.getElementsByClassName('container')[0];
 
@@ -18,7 +20,7 @@ function NyanServer() {
 
   this.ns = () => {
     let ssid = document.getElementsByClassName('action-session')[0].value;
-    if (ssid !== '') {
+    if (ssid != '') {
       this.join(ssid);
     } else {
       this.newSession();
