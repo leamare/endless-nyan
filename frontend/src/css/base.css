@@ -137,6 +137,6 @@ body {
   cursor: pointer;
 }
 
-.slidecontainer {
+.slidecontainer, .action-question {
   float: right;
 }
