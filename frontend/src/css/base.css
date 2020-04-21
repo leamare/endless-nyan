@@ -12,7 +12,7 @@ body {
   width: 100%;
   overflow: hidden;
   background-size: 50%;
-  animation: backgroundScroll .84s linear infinite;
+  animation: backgroundScroll .55s linear infinite;
   position: absolute;
 }
 
@@ -49,8 +49,9 @@ body {
 }
 
 @keyframes backgroundScroll {
-  from {background-position: 0 0;}
-  to {background-position: -100% 0;}
+  0% {background-position: 0 10%;}
+  50% {background-position: -50% -5%;}
+  100% {background-position: -100% 15%;}
 }
 
 .topmenu {

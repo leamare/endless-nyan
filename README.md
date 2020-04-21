@@ -2,6 +2,8 @@
 
 ReactPHP + JS based endless Nyan Cat animation that can be run across multiple devices
 
+https://lab.ileamare.ru/endl-nyan/
+
 ## Why?
 
 because.
