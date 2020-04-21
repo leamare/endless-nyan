@@ -58,7 +58,6 @@ function NyanServer() {
     }
     // start move
     if (evt.data.indexOf('fm') === 0) {
-      console.log('start mv');
       this.startMovement();
     }
 
