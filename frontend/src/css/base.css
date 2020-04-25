@@ -5,14 +5,13 @@
 
 body {
   min-height:100%;
+  min-width: 1000px;
 }
 
 .container {
   height: 100%;
   width: 100%;
   overflow: hidden;
-  background-size: 50%;
-  animation: backgroundScroll .55s linear infinite;
   position: absolute;
 }
 
@@ -48,14 +47,8 @@ body {
   z-index: 1;
 }
 
-@keyframes backgroundScroll {
-  0% {background-position: 0 10%;}
-  50% {background-position: -50% -5%;}
-  100% {background-position: -100% 15%;}
-}
-
 .topmenu {
-  height:3vmax;
+  height:2.5vmax;
   overflow-x: auto;
   background-color: rgba(0,0,0,0.3);
 }
@@ -63,29 +56,27 @@ body {
 .topmenu div {
   display: inline-block;
   font-family: sans-serif;
-  line-height: 3vmax;
-  font-size: 1.5vmax;
-  border-right: .5vmin solid rgba(0,0,0,0.5);
-  margin-right: .5vmax;
+  line-height: 2.5vmax;
+  font-size: 1.3vmax;
+  border-right: .3vmax solid rgba(0,0,0,0.5);
   color: #fff;
-  min-width: 10vw;
+  padding: 0 1vmax;
   cursor: pointer;
 }
 
-.topmenu input[type=text] {
+.topmenu input[type=text], .topmenu select {
   display: inline-block;
   font-family: sans-serif;
-  height: 2.8vmax;
-  line-height: 2.5vmax;
-  font-size: 1.5vmax;
+  height: 2.4vmax;
+  line-height: 2.4vmax;
+  font-size: 1.3vmax;
   padding-left: 1vmax;
   padding-right: 1vmax;
   color: #fff;
   background-color: rgba(22,22,22,0.5);
   border: none;
-  width: 20vw;
+  width: 14vw;
   cursor: pointer;
-  margin-right: 1vmin;
 }
 
 .container .action-disconnect {
@@ -109,14 +100,14 @@ body {
   margin-left: .5vmax;
   margin-right: .5vmax;
   font-family: sans-serif;
-  height: 2.5vmax;
-  line-height: 2.5vmax;
+  height: 2.3vmax;
+  line-height: 2.3vmax;
   vertical-align: middle;
   color: #fff;
   background-color: rgba(22,22,22,0.5);
   -webkit-appearance: none;
   appearance: none;
-  height: 2.5vmax;
+  height: 2.3vmax;
   outline: none;
   opacity: 0.7;
   -webkit-transition: .2s;
@@ -125,14 +116,14 @@ body {
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none; /* Override default look */
   appearance: none;
-  width: 1vmin;
-  height: 3vmin;
+  width: 0.7vmax;
+  height: 2.1vmax;
   background: #fff;
   cursor: pointer;
 }
 .slider::-moz-range-thumb {
-  width: 1vmin;
-  height: 3vmin;
+  width: 1vmax;
+  height: 2.4vmax;
   background: #fff;
   cursor: pointer;
 }
@@ -146,13 +137,13 @@ body {
   z-index: 5;
   background-color: rgba(0,0,0,0.5);
   color: #fff;
-  font-size: 1.5vmax;
-  line-height: 2.5vmax;
+  font-size: 1.4vmax;
+  line-height: 2.3vmax;
   font-family: sans-serif;
   padding: 2.5vw;
   top: 10vh;
-  width: 65vw;
-  left: 15vw;
+  width: 85vw;
+  left: 5vw;
   display: none;
 }
 .infobox a {
