@@ -29,3 +29,13 @@ because.
 because.
 
 Also I had some cool projects based on ReactPHP, but I can't really show it off on my github. So when I thought about WebSocket server, it was an obvious solution for me.
+
+## Credits 
+
+Credits for all the runners and stuff:
+
+* Nyan Cat - original animation by prguitarman, music by saraj00n and daniwellP
+* Space Core - original character by Valve (Portal 2), original animation by halolz
+* Pusheen - original character and animation by Claire Belton, Andrew Duff
+* Sonic the Hedgehog - original character by Sega, all sprites taken from Sonic Mania game, music by Dreams Come True, recorded from Sonic the Hedgehog game (1991)
+* Marisa Kirisame - original character by ZUN, sprites and animations by Ladybug studio (from the awesome Touhou Luna Nights game), background from Touhou Hisoutensoku game by Team Shanghai Alice, original music by Team Shanghai Alice and ZUN (Koi Iro Master Spark)

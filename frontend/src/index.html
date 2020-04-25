@@ -3,6 +3,7 @@
   <head>
     <title>Endless Nyan Cat</title>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=1000">
     <link href="favicon.ico" rel="icon" type="image/x-icon">
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
     <link rel="stylesheet" type="text/css" href="bundle.min.css?v={{{{ buildId }}}}" />
@@ -14,6 +15,13 @@
         <div class="action-connector">create / join</div>
         <div class="action-disconnect">leave</div>
         <div class="action-pause">move / pause</div>
+        <select class="action-select">
+          <option value="default">Nyan Cat</option>
+          <option value="pusheen">Pusheen</option>
+          <option value="space">Space Core</option>
+          <option value="sonic">Sonic</option>
+          <option value="marisa">Marisa Kirisame</option>
+        </select>
         <div class="action-question">help</div>
         <div class="slidecontainer volume">
           volume
@@ -32,8 +40,19 @@
       <p>Type session code to input box in the top left corner and click "Join" to join a session</p>
       <p>Click "Move" to start moving!</p>
       <br />
-      <a href="https://github.com/leamare/endless-nyan" target="_blank">Github</a><br /><br />
-      <a href="#" class="close-infobox">Close this window</a>
+      <a href="https://github.com/leamare/endless-nyan" target="_blank">Github</a> - <a href="#" class="close-infobox">Close this window</a>
+      <br /><br />
+      <h4>Credits</h4>
+        <ul>
+          <li><b>Nyan Cat</b> - original animation by prguitarman, music by saraj00n and daniwellP</li>
+          <li><b>Space Core</b> - original character by Valve (Portal 2), original animation by halolz</li>
+          <li><b>Pusheen</b> - original character and animation by Claire Belton, Andrew Duff</li>
+          <li><b>Sonic the Hedgehog</b> - original character by Sega, all sprites taken from Sonic Mania game, 
+            music by Dreams Come True, recorded from Sonic the Hedgehog game (1991)</li>
+          <li><b>Marisa Kirisame</b> - original character by ZUN, sprites and animations by Ladybug studio 
+              (from the awesome Touhou Luna Nights game), background from Touhou Hisoutensoku game by Team Shanghai Alice, 
+              original music by Team Shanghai Alice and ZUN (Koi Iro Master Spark)</li>
+      </ul>
     </div>
     <script src="vendor.js?v={{{{ buildId }}}}"></script>
     <script src="bundle.js?v={{{{ buildId }}}}"></script>

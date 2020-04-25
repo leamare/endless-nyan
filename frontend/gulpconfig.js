@@ -3,7 +3,7 @@
 let config  = require('./config.json');
 
 const __BUILDID__ = (+new Date).toString(36),
-      __VERSION__ = '1.1.0',
+      __VERSION__ = '2.0.0',
       __NYANSRV__ = config.srv;
 
 var src   = './src/',
@@ -87,7 +87,7 @@ module.exports = {
   images: [
     {
       src: [
-        src + 'assets/**/*.{png,jpg,svg}',
+        src + 'assets/**/*.{jpg,svg}',
       ],
       dest: build + 'assets/'
     }
@@ -106,7 +106,7 @@ module.exports = {
     },
     {
       src: [
-        src + 'assets/**/*.{gif,mp3}',
+        src + 'assets/**/*.{png,gif,mp3}',
       ],
       binary: true,
       dest: build + 'assets/'
@@ -165,13 +165,13 @@ module.exports = {
         src + 'templ/*.html',
       ],
       images: src + [
-        src + 'res/**/*.{png,jpg,svg}',
+        src + 'res/**/*.{jpg,svg}',
       ],
       copy: [
         src + 'index.html',
         src + '*.*',
         src + '.*',
-        src + 'assets/**/*.{gif,mp3}',
+        src + 'assets/**/*.{png,gif,mp3}',
       ],
     }
   }
