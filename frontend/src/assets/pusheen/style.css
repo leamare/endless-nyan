@@ -1,0 +1,61 @@
+.pusheen-cat {
+  background-image: url('assets/default/bg.gif');
+  /* background-image: linear-gradient(to left, rgba(0,0,0,1), 70%, rgba(255,255,255,1)); */
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  background-size: 75.5vmin;
+  animation: backgroundDefScroll .80s linear infinite;
+}
+
+.pusheen-cat .nyanner {
+  top: calc(50% - 15vmin);
+  left: calc(-50vw + 15vmin);
+}
+
+.pusheen-cat .runner {
+  background-image: url('assets/pusheen/agent.gif');
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  animation: origCatAnim .7s linear infinite;
+  height: 30vmin;
+  width: 30vmin;
+}
+
+.pusheen-cat .trail {
+  background-image: url('assets/pusheen/trail_static.png');
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  mask-image: linear-gradient(to left, rgba(0,0,0,1), 50%, rgba(0,0,0,0));
+  -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1), 50%, rgba(0,0,0,0));
+  mask-size: 100%;
+  -webkit-mask-size: 100%;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  animation: backgroundScrollOrigTrail 1.4s linear infinite;
+
+  height: 20vmin;
+  width: 92vmin;
+  margin-top: 6vmin;
+  margin-right: 20vmin;
+}
+
+@keyframes backgroundDefScroll {
+  0% {background-position: 0 2vmin;}
+  50% {background-position: -75.5vmin -2vmin;}
+  100% {background-position: -151vmin 2vmin;}
+}
+
+@keyframes backgroundScrollOrigTrail {
+  from {background-position: 0 0;}
+  to {background-position: -100% 0;}
+}
+
+@keyframes origCatAnim {
+  0% {margin-right: 0;}
+  50% {margin-right: 2vmin;}
+  75% {margin-right: 3vmin;}
+  100% {margin-right: 0;}
+}
