@@ -21,7 +21,7 @@
 
 .sonic-cat .nyanner {
   position: absolute;
-  top: calc(50% + 6vh);
+  top: 56.5vh;
   left: calc(-50vw + 12vh);
   height: 26vh;
 }
