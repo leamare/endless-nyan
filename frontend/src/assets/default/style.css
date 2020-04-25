@@ -4,6 +4,8 @@
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
+  background-size: 75.5vmin;
+  animation: backgroundDefScroll .80s linear infinite;
 }
 
 .default-cat .runner {
@@ -32,6 +34,12 @@
   height: 21vmin;
   width: 96vmin;
   margin-right: 23vmin;
+}
+
+@keyframes backgroundDefScroll {
+  0% {background-position: 0 2vmin;}
+  50% {background-position: -75.5vmin -2vmin;}
+  100% {background-position: -151vmin 2vmin;}
 }
 
 @keyframes backgroundScrollOrigTrail {
