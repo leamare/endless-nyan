@@ -28,10 +28,15 @@ function NyanServer() {
   }
 
   this.updateSettings = (params) => {
+    //console.log(params);
     if (this.type !== params[0]) {
       this.container.classList.remove(`${this.type}-cat`);
       this.type = params[0];
+      localStorage.runner = this.type;
       this.container.classList.add(`${this.type}-cat`);
+      this.sendSync();
+      if (this.nyanner)
+        this.nyanner.updateNyanner();
     }
   }
 
@@ -102,6 +107,10 @@ function NyanServer() {
     if (evt.data.indexOf('se') === 0) {
       this.leave();
     }
+    // become host
+    if (evt.data.indexOf('sh') === 0) {
+      this.becomeHost();
+    }
 
 
     // Sync timer
@@ -151,6 +160,10 @@ function NyanServer() {
     }
   }
 
+  this.becomeHost = (primary) => {
+    this.container.classList.add('primary');
+  }
+
   this.unsetSession = () => {
     let sscont = document.getElementsByClassName('action-session')[0];
     this.container.classList.remove('connected');
@@ -160,11 +173,13 @@ function NyanServer() {
   }
 
   this.sendSync = () => {
-    this.conn.send('sy:'+this.nyanner.audio.seek()+':'+this.type);
+    const sk = this.nyanner ? this.nyanner.audio.seek() : 0;
+    if (this.session)
+      this.conn.send('sy:'+sk+':'+this.type);
   }
 
   this.sync = (time, params) => {
-    this.nyanner.audio.seek(time+.05);
+    this.nyanner.audio.seek(time+.01);
     this.updateSettings(params);
   }
 
@@ -203,5 +218,5 @@ function NyanServer() {
     }
   }
 
-  this.updateSettings([ 'default' ]);
+  this.updateSettings([ localStorage.runner ]);
 }

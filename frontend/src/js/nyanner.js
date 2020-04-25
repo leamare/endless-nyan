@@ -1,4 +1,6 @@
-function Nyanner(elem, server) {
+function Nyanner(elem, server, map) {
+  const nyanmap = map;
+
   this.srv = server;
   server.link(this);
 
@@ -8,26 +10,32 @@ function Nyanner(elem, server) {
   this.status = 'idle';
   this.maxvol = 1;
 
-  this.audio = new Howl({
-    preload: true,
-    loop: true,
-    src: [`assets/${server.type || 'default'}/nyan.mp3`]
-  });
-
   this.paused = false;
   this.mvAfterHidden = false;
 
   this.speed = 0.5;
   this.timer = 40;
 
-  this.beginAudio = new Howl({
-    preload: true,
-    loop: false,
-    src: [`assets/${server.type || 'default'}/begin.mp3`]
-  });
-
   this.idleReset = () => {
-    this.el.style.left = undefined;
+    this.stopNyan();
+    this.el.style.removeProperty('left');
+  }
+
+  this.startAudio = () => {
+    if (!nyanmap[ server.type ].begin)
+      return this.startRunning();
+
+    this.beginAudio = new Howl({
+      preload: true,
+      loop: false,
+      src: [ nyanmap[ server.type ].begin ]
+    });
+
+    this.beginAudio.volume(this.maxvol);
+    this.beginAudio.play();
+    this.beginAudio.on('end', () => {
+      this.startRunning();
+    });
   }
 
   this.init = () => {
@@ -36,11 +44,7 @@ function Nyanner(elem, server) {
     this.stopNyan();
     this.el.style.left = '-80%';
     
-    this.beginAudio.volume(this.maxvol);
-    this.beginAudio.play();
-    this.beginAudio.on('end', () => {
-      this.startRunning();
-    })
+    this.startAudio();
   }
 
   let runnerFunc = () => {
@@ -147,4 +151,40 @@ function Nyanner(elem, server) {
     this.audio.volume(vol*k);
     this.maxvol = vol;
   }
+
+  // 
+
+  this.nyanners = () => {
+    return Object.keys(nyanmap);
+  }
+
+  this.updateNyanner = () => {
+    let seek, vol, duration, state;
+    if (this.audio) {
+      seek = this.audio.seek();
+      vol = this.audio.volume();
+      state = this.audio.playing();
+      if (state)
+        this.audio.stop();
+    } else {
+      seek = 0;
+      vol = this.maxvol;
+    }
+
+    this.audio = new Howl({
+      preload: true,
+      loop: true,
+      src: [nyanmap[ server.type ].loop]
+    });
+
+    if (state) {
+      this.audio.volume(0);
+      this.audio.play();
+      duration = this.audio.duration();
+      this.audio.seek(duration ? seek % duration : seek);
+      this.audio.volume(vol);
+    }
+  }
+
+  this.updateNyanner();
 }
