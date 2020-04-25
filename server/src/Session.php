@@ -58,7 +58,7 @@ class Session {
 
   public function isActive(ConnectionInterface $client) {
     $nm = $this->createConnIdString($client);
-    if (!isset($this->clients[$nm])  || $this->active !== $nm) {
+    if ($this->active != $nm) {
       return false;
     }
 

@@ -146,20 +146,31 @@ class Controller implements MessageComponentInterface {
       return;
     }
     $s = $this->sessions->get($ssid);
-    $s->disconnect($src);
-    if ($s->getClientsNum()) {
+    $owner = $this->sessions->get($ssid)->getOwner();
+    if ($s->getClientsNum() - 1) {
       $state = $s->isActive($src);
       if ($state) {
-        $this->reportStatus($src, NyanCodes::MsgCodes['HitEdge']);
+        $next = $s->getNext($src);
+        $this->reportStatus($src, NyanCodes::MsgCodes['HitEdge'], function() use (&$src, &$s) {
+          $s->disconnect($src);
+        });
+        if ($this->createConnIdString($owner) == $this->createConnIdString($next)) {
+          $code = $s->clientCode($next);
+          $m = NyanCodes::encodeMsg([
+            'event' => 'YouHost',
+          ]);
+          $next->send($m.'|'.$code);
+        }
+      } else {
+        $s->disconnect($src);
       }
-      $s->disconnect($src);
     } else {
       $s->disconnect($src);
       $this->sessions->close($ssid);
     }
   }
 
-  private function reportStatus(ConnectionInterface &$src, string $type) {
+  private function reportStatus(ConnectionInterface &$src, string $type, ?callable $cb = null) {
     $ssid = $this->sessions->findSessionByConn($src);
     if (!$ssid) {
       return;
@@ -195,6 +206,9 @@ class Controller implements MessageComponentInterface {
 
         break;
     }
+
+    if ($cb)
+      $cb();
   }
 
   private function updateSettings(ConnectionInterface &$src, array $params) {
@@ -224,6 +238,7 @@ class Controller implements MessageComponentInterface {
     $owner = $this->sessions->get($ssid)->getOwner();
     if ($this->createConnIdString($owner) !== $this->createConnIdString($src)) {
       $this->sendError($src);
+      return;
     }
 
     $s = $this->sessions->get($ssid);

@@ -33,6 +33,7 @@ class NyanCodes {
     'SessionLostUser' => 'sd',
     'SettingsUpdate' => 'su',
     'SessionTerminated' => 'se',
+    'YouHost' => 'sh',
     
     'SyncRequest' => 'ct',
     'SyncData' => 'sy',
