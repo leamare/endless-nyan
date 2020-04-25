@@ -1,0 +1,55 @@
+.space-cat {
+  background-image: url('assets/space/bg.gif');
+  /* background-image: linear-gradient(to left, rgba(0,0,0,1), 70%, rgba(255,255,255,1)); */
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  background-size: 75.5vmin;
+  animation: backgroundDefScroll .80s linear infinite;
+}
+
+.space-cat .nyanner {
+  top: calc(50% - 15vmin);
+  left: calc(-50vw + 15vmin);
+}
+
+.space-cat .runner {
+  background-image: url('assets/space/agent.gif');
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  animation: spaceCatAnim .7s linear infinite;
+  height: 30vmin;
+  width: 30vmin;
+}
+
+.space-cat .trail {
+  background-image: url('assets/space/trail_static.png');
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  mask-image: linear-gradient(to left, rgba(0,0,0,1), 50%, rgba(0,0,0,0));
+  -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1), 50%, rgba(0,0,0,0));
+  mask-size: 100%;
+  -webkit-mask-size: 100%;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  animation: backgroundScrollOrigTrail 1.4s linear infinite;
+
+  height: 20vmin;
+  width: 92vmin;
+  margin-top: 8vmin;
+  margin-right: 20vmin;
+}
+
+@keyframes backgroundScrollSpaceTrail {
+  from {background-position: 0 0;}
+  to {background-position: -100% 0;}
+}
+
+@keyframes spaceCatAnim {
+  0% {margin-top: 0;}
+  25% {margin-top: 1vmin;}
+  75% {margin-top: -1vmin;}
+  100% {margin-top: 0;}
+}
