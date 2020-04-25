@@ -1,0 +1,52 @@
+.sonic-cat {
+  background-image: url('assets/sonic/gh_floor.png'), url('assets/sonic/fg.gif'), url('assets/sonic/bg.gif');
+  /* background-image: linear-gradient(to left, rgba(0,0,0,1), 70%, rgba(255,255,255,1)); */
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  background-size: 50vh 100vh, 400vh 100vh, 286.7vh 100vh;
+  animation: bgScrollRight 16s linear infinite;
+}
+
+.sonic-cat .runner {
+  background-image: url('assets/sonic/sonic.gif');
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  animation: SonicAnim .7s linear infinite;
+  height: 26vh;
+  width: 24vh;
+  
+}
+
+.sonic-cat .nyanner {
+  position: absolute;
+  top: calc(50% + 6vh);
+  left: calc(-50vw + 12vh);
+  height: 26vh;
+}
+
+.sonic-cat .trail {
+  background-image: linear-gradient(to left, rgba(0,40,94,0), 2vh, rgba(0,40,94,0.3), 50%, rgba(0,0,0,0));
+
+  height: 17vmin;
+  width: 48vmin;
+  margin-top: 8vmin;
+  margin-right: 12vmin;
+}
+
+@keyframes bgScrollRight {
+  0% {background-position: 0 0, 0 0, 0 0;}
+  100% {background-position: -800vh 0, -800vh 0, -286.7vh 0;}
+}
+
+@keyframes bgSonicGroundScroll {
+  from {background-position: 0 0;}
+  to {background-position: -50% 0;}
+}
+
+@keyframes SonicAnim {
+  0% {margin-top: 0;}
+  50% {margin-top: 1vh;}
+  100% {margin-top: 0;}
+}
