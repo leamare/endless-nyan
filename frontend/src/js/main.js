@@ -13,6 +13,9 @@ const nyanmap = {
   'marisa': {
     loop:  'assets/marisa/music.mp3'
   },
+  'marisa-surf': {
+    loop:  'assets/marisa/music.mp3'
+  },
   'space': {
     begin: 'assets/space/begin.mp3',
     loop:  'assets/space/nyan.mp3'

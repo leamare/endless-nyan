@@ -1,4 +1,4 @@
-.marisa-cat {
+.marisa-cat, .marisa-surf-cat {
   background-image: url('assets/marisa/bg.gif');
   /* background-image: linear-gradient(to left, rgba(0,0,0,1), 70%, rgba(255,255,255,1)); */
   image-rendering: pixelated;
@@ -7,8 +7,7 @@
   background-size: 100vw 100vh;
 }
 
-.marisa-cat .runner {
-  background-image: url('assets/marisa/marisa_luna.gif');
+.marisa-cat .runner, .marisa-surf-cat .runner {
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
@@ -17,7 +16,16 @@
   width: 34vmin;
 }
 
-.marisa-cat .trail {
+.marisa-cat .runner {
+  background-image: url('assets/marisa/marisa_luna.gif');
+}
+
+.marisa-surf-cat .runner {
+  background-image: url('assets/marisa/marisa_standing.gif');
+  height: 28vmin;
+}
+
+.marisa-cat .trail, .marisa-surf-cat .trail {
   background-image: url('assets/marisa/trail_static.png');
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
@@ -34,6 +42,20 @@
   margin-top: 3vmin;
   width: 96vmin;
   margin-right: 20vmin;
+}
+
+.marisa-cat .trail {
+  height: 16vmin;
+  margin-top: 3vmin;
+  width: 96vmin;
+  margin-right: 20vmin;
+}
+
+.marisa-surf-cat .trail {
+  height: 16vmin;
+  margin-top: 3vmin;
+  width: 96vmin;
+  margin-right: 16vmin;
 }
 
 @keyframes marisaCatAnim {
