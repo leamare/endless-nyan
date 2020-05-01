@@ -1,0 +1,9 @@
+.sonic-sunset-cat {
+  background-image: url('assets/sonic-sunset/gh_floor_sunset.png'), url('assets/sonic-sunset/fg_sunset.gif'), url('assets/sonic-sunset/bg_sunset.gif');
+  /* background-image: linear-gradient(to left, rgba(0,0,0,1), 70%, rgba(255,255,255,1)); */
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  background-size: 50vh 100vh, 400vh 100vh, 286.7vh 100vh;
+  animation: bgScrollRight 16s linear infinite;
+}

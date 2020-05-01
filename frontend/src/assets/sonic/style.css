@@ -8,7 +8,7 @@
   animation: bgScrollRight 16s linear infinite;
 }
 
-.sonic-cat .runner {
+.sonic-cat .runner, .sonic-sunset-cat .runner {
   background-image: url('assets/sonic/sonic.gif');
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
@@ -19,14 +19,14 @@
   
 }
 
-.sonic-cat .nyanner {
+.sonic-cat .nyanner, .sonic-sunset-cat .nyanner {
   position: absolute;
   top: 56.5vh;
   left: calc(-50vw + 12vh);
   height: 26vh;
 }
 
-.sonic-cat .trail {
+.sonic-cat .trail, .sonic-sunset-cat .trail {
   background-image: linear-gradient(to left, rgba(0,40,94,0), 2vh, rgba(0,40,94,0.3), 50%, rgba(0,0,0,0));
 
   height: 17vmin;
