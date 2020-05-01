@@ -4,7 +4,7 @@ function NyanServer() {
   setInterval(() => this.conn.send('pi'), 5000);
 
   this.session = null;
-  this.container = document.getElementsByClassName('container')[0];
+  this.container = document.getElementById('container');
 
   this.link = (nyanner) => {
     this.nyanner = nyanner;
@@ -19,7 +19,7 @@ function NyanServer() {
   }
 
   this.ns = () => {
-    let ssid = document.getElementsByClassName('action-session')[0].value;
+    let ssid = document.getElementById('action-session').value;
     if (ssid != '') {
       this.join(ssid);
     } else {
@@ -151,7 +151,7 @@ function NyanServer() {
 
   this.setSession = (ssid, primary) => {
     this.session = ssid;
-    let sscont = document.getElementsByClassName('action-session')[0];
+    let sscont = document.getElementById('action-session');
     this.container.classList.add('connected');
     sscont.value = this.session;
     sscont.setAttribute('disabled', '');
@@ -165,7 +165,7 @@ function NyanServer() {
   }
 
   this.unsetSession = () => {
-    let sscont = document.getElementsByClassName('action-session')[0];
+    let sscont = document.getElementById('action-session');
     this.container.classList.remove('connected');
     this.container.classList.remove('primary');
     sscont.value = '';

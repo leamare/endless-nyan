@@ -8,7 +8,7 @@ body {
   min-width: 1000px;
 }
 
-.container {
+#container {
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -79,19 +79,19 @@ body {
   cursor: pointer;
 }
 
-.container .action-disconnect {
+#container #action-disconnect {
   display: none;
 }
-.container .action-pause {
+#container #action-pause {
   display: none;
 }
-.container.connected .action-connector {
+#container.connected #action-connector {
   display: none;
 }
-.container.connected .action-disconnect {
+#container.connected #action-disconnect {
   display: inline-block;
 }
-.container.primary .action-pause {
+#container.primary #action-pause {
   display: inline-block;
 }
 
@@ -128,11 +128,11 @@ body {
   cursor: pointer;
 }
 
-.slidecontainer, .action-question {
+.slidecontainer, #action-question {
   float: right;
 }
 
-.infobox {
+#infobox {
   position:absolute;
   z-index: 5;
   background-color: rgba(0,0,0,0.5);
@@ -146,6 +146,6 @@ body {
   left: 5vw;
   display: none;
 }
-.infobox a {
+#infobox a {
   color: #fff;
 }

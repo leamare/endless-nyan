@@ -28,7 +28,7 @@ const nyanmap = {
 if (!localStorage.runner) {
   localStorage.runner = 'default';
 }
-document.getElementsByClassName('action-select')[0].value = localStorage.runner;
+document.getElementById('action-select').value = localStorage.runner;
 
 let srv = new NyanServer();
 let nyan = new Nyanner(
@@ -39,28 +39,28 @@ let nyan = new Nyanner(
 
 if (!localStorage.help) {
   localStorage.help = '1';
-  document.getElementsByClassName('infobox')[0].style.display = 'block';
+  document.getElementById('infobox').style.display = 'block';
 }
 
-document.getElementsByClassName('action-connector')[0].onclick = () => srv.ns();
-document.getElementsByClassName('action-disconnect')[0].onclick = () => srv.leave();
-document.getElementsByClassName('action-pause')[0].onclick = () => srv.pause();
-document.getElementsByClassName('action-question')[0].onclick = () => {
-  const el = document.getElementsByClassName('infobox')[0];
+document.getElementById('action-connector').onclick = () => srv.ns();
+document.getElementById('action-disconnect').onclick = () => srv.leave();
+document.getElementById('action-pause').onclick = () => srv.pause();
+document.getElementById('action-question').onclick = () => {
+  const el = document.getElementById('infobox');
   const state = el.style.display;
   if (state === 'none')
     el.style.display = 'block';
   else
     el.style.display = 'none';
 };
-document.getElementsByClassName('close-infobox')[0].onclick = () => {
-  document.getElementsByClassName('infobox')[0].style.display = 'none';
+document.getElementById('close-infobox').onclick = () => {
+  document.getElementById('infobox').style.display = 'none';
 };
-document.getElementsByClassName('slider')[0].onchange = (e) => {
+document.getElementById('volbox').onchange = (e) => {
   let vol = +e.target.value/100;
   nyan.setVol(vol);
 }
 
-document.getElementsByClassName('action-select')[0].onchange = (e) => {
+document.getElementById('action-select').onchange = (e) => {
   srv.updateSettings([ e.target.value ]);
 }

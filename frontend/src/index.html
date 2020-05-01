@@ -9,13 +9,13 @@
     <link rel="stylesheet" type="text/css" href="bundle.min.css?v={{{{ buildId }}}}" />
   </head>
   <body class="">
-    <div class="container">
+    <div id="container">
       <div class="topmenu">
-        <input class="action-session" type="text" value="" />
-        <div class="action-connector">create / join</div>
-        <div class="action-disconnect">leave</div>
-        <div class="action-pause">move / pause</div>
-        <select class="action-select">
+        <input id="action-session" type="text" value="" />
+        <div id="action-connector">create / join</div>
+        <div id="action-disconnect">leave</div>
+        <div id="action-pause">move / pause</div>
+        <select id="action-select">
           <option value="default">Nyan Cat</option>
           <option value="pusheen">Pusheen</option>
           <option value="space">Space Core</option>
@@ -24,8 +24,8 @@
           <option value="marisa">Marisa Kirisame</option>
           <option value="marisa-surf">Marisa Kirisame 2</option>
         </select>
-        <div class="action-question">help</div>
-        <div class="slidecontainer volume">
+        <div id="action-question">help</div>
+        <div id="volume" class="slidecontainer volume">
           volume
           <input type="range" min="1" max="100" value="100" class="slider" id="volbox">
         </div>
@@ -35,14 +35,14 @@
         <div class="trail"></div>
       </div>
     </div>
-    <div class="infobox">
+    <div id="infobox">
       <h3>Endless nyanner v {{{{ version }}}}</h3>
       <p>This is nyan cat that runs from one screen to another.</p>
       <p>Create a session by clicking "Create" and give your code to friends so they join you.</p>
       <p>Type session code to input box in the top left corner and click "Join" to join a session</p>
       <p>Click "Move" to start moving!</p>
       <br />
-      <a href="https://github.com/leamare/endless-nyan" target="_blank">Github</a> - <a href="#" class="close-infobox">Close this window</a>
+      <a href="https://github.com/leamare/endless-nyan" target="_blank">Github</a> - <a href="#" id="close-infobox">Close this window</a>
       <br /><br />
       <h4>Credits</h4>
         <ul>
