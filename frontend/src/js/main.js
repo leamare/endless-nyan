@@ -10,6 +10,9 @@ const nyanmap = {
   'sonic': {
     loop:  'assets/sonic/ghz.mp3'
   },
+  'spectre': {
+    loop:  'assets/spectre/laning2016.mp3'
+  },
   'sonic-sunset': {
     loop:  'assets/sonic/ghz.mp3'
   },

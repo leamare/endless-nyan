@@ -1,0 +1,108 @@
+.spectre-cat {
+  background-image: url('assets/spectre/bg_trees.gif'), url('assets/spectre/bg.gif');
+  /* background-image: linear-gradient(to left, rgba(0,0,0,1), 70%, rgba(255,255,255,1)); */
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  background-size: 200vh 100vh, 25vh 100vh;
+  background-repeat: repeat-x;
+  animation: bgScrollRightSpec 16s linear infinite;
+  background-position: 0 0, 0 0;
+}
+
+.spectre-cat:after {
+  content:'';
+  width: 100vw;
+  height: 95vh;
+  position: absolute;
+  top:5vh;
+  left: 0;
+  background-image: url('assets/spectre/bg_trees.gif');
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  background-size: 300vh 150vh;
+  background-repeat: repeat-x;
+  animation: bgScrollRightFgSpec 12s linear infinite;
+  background-position: 0 -10vh;
+  filter: brightness(0.6);
+  z-index: 4;
+}
+
+.spectre-cat:before {
+  content:'';
+  width: 100vw;
+  height: 95vh;
+  position: absolute;
+  top:5vh;
+  left: 0;
+  background-image: url('assets/spectre/bg_trees.gif');
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  background-size: 160vh 80vh;
+  background-repeat: repeat-x;
+  animation: bgScrollRightBgSpec 12s linear infinite;
+  background-position: 0 -10vh;
+  filter: brightness(1.5);
+  z-index: 1;
+}
+
+.spectre-cat .runner {
+  background-image: url('assets/spectre/spectre.gif');
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  animation: SonicAnim .7s linear infinite;
+  height: 52vh;
+  width: 51vh;
+  
+}
+
+.spectre-cat .nyanner {
+  position: absolute;
+  top: 40vh;
+  left: calc(-50vw + 26vh);
+  height: 26vh;
+}
+
+.spectre-cat .trail {
+  background-image: url('assets/spectre/trail_static.png');
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+
+  animation: backgroundScrollSpecTrail 1.4s linear infinite;
+
+  mask-image: linear-gradient(to left, rgba(0,0,0,1), 50%, rgba(0,0,0,0));
+  -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1), 50%, rgba(0,0,0,0));
+  mask-size: 100%;
+  -webkit-mask-size: 100%;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+
+  height: 10vh;
+  width: 90vh;
+  margin-top: 40vh;
+  margin-right: 30vmin;
+}
+
+@keyframes bgScrollRightSpec {
+  0% {background-position: 0 0, 0 0;}
+  100% {background-position: -600vh 0, -600vh 0;}
+}
+
+@keyframes bgScrollRightBgSpec {
+  0% {background-position: 0 15vh;}
+  100% {background-position: -320vh 15vh;}
+}
+
+@keyframes bgScrollRightFgSpec {
+  0% {background-position: 0 -22vh;}
+  100% {background-position: -600vh -22vh;}
+}
+
+@keyframes backgroundScrollSpecTrail {
+  from {background-position: 0 0;}
+  to {background-position: -45vh 0;}
+}
