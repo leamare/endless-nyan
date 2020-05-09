@@ -1,4 +1,4 @@
-function NyanServer() {
+function NyanServer(runner) {
   //this.type = 'default';
   this.conn = new WebSocket(__nyansrv__);
   setInterval(() => this.conn.send('pi'), 5000);
@@ -218,5 +218,5 @@ function NyanServer() {
     }
   }
 
-  this.updateSettings([ localStorage.runner ]);
+  this.updateSettings([ runner ]);
 }

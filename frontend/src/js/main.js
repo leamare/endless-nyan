@@ -28,12 +28,22 @@ const nyanmap = {
   },
 };
 
-if (!localStorage.runner) {
+let hash = location.hash.substr(1);
+let curNyanner;
+
+if (!localStorage.runner || !nyanmap[localStorage.runner]) {
   localStorage.runner = 'default';
 }
-document.getElementById('action-select').value = localStorage.runner;
 
-let srv = new NyanServer();
+if (hash && nyanmap[hash]) {
+  curNyanner = hash;
+} else {
+  curNyanner = localStorage.runner;
+}
+
+document.getElementById('action-select').value = curNyanner;
+
+let srv = new NyanServer(curNyanner);
 let nyan = new Nyanner(
   document.getElementById('nyan'),
   srv,
