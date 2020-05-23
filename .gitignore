@@ -7,3 +7,5 @@ server/.php_cs.cache
 frontend/node_modules/
 frontend/build/
 frontend/config.json
+
+frontend/src/assets/tardis/dw_main.mp3

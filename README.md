@@ -40,5 +40,6 @@ Credits for all the runners and stuff:
 * Sonic the Hedgehog - original character by Sega, all sprites taken from Sonic Mania game, music by Dreams Come True, recorded from Sonic the Hedgehog game (1991)
 * Marisa Kirisame - original character by ZUN, sprites and animations by Ladybug studio (from the awesome Touhou Luna Nights game), background from Touhou Hisoutensoku game by Team Shanghai Alice, original music by Team Shanghai Alice and ZUN (Koi Iro Master Spark)
 * Spectre and Dota 2 - copyright Valve, Spectre gif by Leamare, assets for background and trees by redditor /u/yokcos700, bg music Laning 2016 theme by Valve/Tim Larkin (ripped from the game)
+* Dota Courier - copyright Valve, Courier gif by Leamare, music by Matt Hawken (Laning sequence 2 from Desert Music Pack for Dota 2, combined by leamare) - Music is not added to the repository for copyright reasons
 
-Every track was manually ripped from publicly available resources for (at least what seems to be) free usage.
+Every track (except the ones that weren't) was manually ripped from publicly available resources for (at least what seems to be) free usage.

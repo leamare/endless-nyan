@@ -53,6 +53,9 @@ body {
   background-color: rgba(0,0,0,0.3);
   overflow-y: hidden;
   font-size: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 10;
 }
 
 .topmenu div {
@@ -139,8 +142,8 @@ body {
   z-index: 5;
   background-color: rgba(0,0,0,0.5);
   color: #fff;
-  font-size: 1.4vmax;
-  line-height: 2.3vmax;
+  font-size: 1.3vmax;
+  line-height: 2.2vmax;
   font-family: sans-serif;
   padding: 2.5vw;
   top: 10vh;

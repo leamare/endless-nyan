@@ -26,6 +26,9 @@ const nyanmap = {
     begin: 'assets/space/begin.mp3',
     loop:  'assets/space/nyan.mp3'
   },
+  'tardis': {
+    loop:  'assets/tardis/dw_main.mp3'
+  },
 };
 
 let hash = location.hash.substr(1);

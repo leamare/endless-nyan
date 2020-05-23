@@ -1,0 +1,81 @@
+.tardis-cat {
+  background-image: url('assets/tardis/schism_2.gif'), url('assets/tardis/schism_3.gif'), url('assets/tardis/schism_4.gif');
+  /* background-image: linear-gradient(to left, rgba(0,0,0,1), 70%, rgba(255,255,255,1)); */
+  background-color: #180837;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  background-size: 133vh 100vh;
+  background-repeat: repeat-x;
+  animation: bgScrollRightTardis 8s linear infinite;
+  background-position: 0 0, 0 0;
+}
+
+.tardis-cat:before {
+  content:'';
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  left: 0;
+  background-image: url('assets/tardis/schism_1.gif');
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  background-size: 133vh 100vh;
+  background-repeat: repeat-x;
+  animation: bgScrollRightFgTardis 8s linear infinite;
+  z-index: 3;
+}
+
+.tardis-cat .runner {
+  background-image: url('assets/tardis/tardis.gif');
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  animation: TardisAnim 2s linear infinite;
+  height: 20vh;
+  width: 11.5vh;
+}
+
+.tardis-cat .nyanner {
+  position: absolute;
+  top: 40vh;
+  left: calc(-50vw + 5.75vh);
+  height: 20vh;
+}
+
+
+@keyframes bgScrollRightTardis {
+  0% {background-position: 0 0, 0 0, 0 0;}
+  100% {background-position: -532vh 0, -399vh 0, -266vh 0;}
+}
+
+@keyframes bgScrollRightFgTardis {
+  0% {background-position: 0 0;}
+  100% {background-position: -798vh 0;}
+}
+
+@keyframes backgroundScrollSpecTrail {
+  from {background-position: 0 0;}
+  to {background-position: -45vh 0;}
+}
+
+@keyframes TardisAnim {
+  0% {
+    margin-top: 0;
+    transform: rotate(0);
+  }
+  25% {
+    margin-top: 40vh;
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    margin-top: -40vh;
+  }
+  100% {
+    margin-top: 0;
+    transform: rotate(360deg);
+  }
+}
