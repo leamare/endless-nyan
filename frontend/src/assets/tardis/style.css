@@ -33,14 +33,14 @@
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
   animation: TardisAnim 2s linear infinite;
-  height: 20vh;
-  width: 11.5vh;
+  height: 30vh;
+  width: 17.25vh;
 }
 
 .tardis-cat .nyanner {
   position: absolute;
-  top: 40vh;
-  left: calc(-50vw + 5.75vh);
+  top: 35vh;
+  left: calc(-50vw + 8.625vh);
   height: 20vh;
 }
 

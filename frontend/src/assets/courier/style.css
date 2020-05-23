@@ -13,14 +13,14 @@
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
   animation: origCatAnim .7s linear infinite;
-  height: 40vmin;
-  width: 40vmin;
+  height: 30vh;
+  width: 30vh;
 }
 
 .courier-cat .nyanner {
   position: absolute;
-  top: 30vh;
-  left: calc(-50vw + 20vh);
+  top: 35vh;
+  left: calc(-50vw + 15vh);
   height: 40vh;
 }
 
