@@ -59,6 +59,8 @@ let nyan = new Nyanner(
 if (!localStorage.help) {
   localStorage.help = '1';
   document.getElementById('infobox').style.display = 'block';
+} else {
+  document.getElementById('infobox').style.display = 'none';
 }
 
 document.getElementById('action-connector').onclick = () => srv.ns();
