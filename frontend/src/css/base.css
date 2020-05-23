@@ -142,13 +142,13 @@ body {
   z-index: 5;
   background-color: rgba(0,0,0,0.5);
   color: #fff;
-  font-size: 1.3vmax;
-  line-height: 2.2vmax;
+  font-size: 1.2vmax;
+  line-height: 2.1vmax;
   font-family: sans-serif;
-  padding: 2.5vw;
-  top: 10vh;
-  width: 85vw;
-  left: 5vw;
+  padding: 2vw;
+  top: 7vh;
+  width: 90vw;
+  left: 3vw;
   display: none;
 }
 #infobox a {

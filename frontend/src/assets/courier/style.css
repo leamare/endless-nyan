@@ -1,0 +1,36 @@
+.courier-cat {
+  background-image: url('assets/courier/clouds.gif'), url('assets/courier/bg.gif');
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  background-size: 133vh 100vh, auto 100vh;
+  animation: bgScrollRightCourier 8s linear infinite;
+}
+
+.courier-cat .runner {
+  background-image: url('assets/courier/courier.gif');
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  animation: origCatAnim .7s linear infinite;
+  height: 40vmin;
+  width: 40vmin;
+}
+
+.courier-cat .nyanner {
+  position: absolute;
+  top: 30vh;
+  left: calc(-50vw + 20vh);
+  height: 40vh;
+}
+
+@keyframes backgroundDefScroll {
+  0% {background-position: 0 2vmin;}
+  50% {background-position: -75.5vmin -2vmin;}
+  100% {background-position: -151vmin 2vmin;}
+}
+
+@keyframes bgScrollRightCourier {
+  0% {background-position: 0 0, 0 0;}
+  100% {background-position: -266vh 0, 0 0;}
+}
