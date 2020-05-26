@@ -8,7 +8,16 @@ class Sessions {
   private $sessions = [];
 
   public function new() {
-    $nm = $this->generateSessionName();
+    $i = 10;
+    do {
+      $nm = $this->generateSessionName();
+      $i--;
+    } while (isset($this->sessions[$nm]) && $i > 0);
+
+    if (!$i) {
+      throw new \Exception("Can't create session: too many occupied names");
+    }
+
     $this->sessions[$nm] = new Session();
 
     return $nm;
