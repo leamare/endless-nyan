@@ -118,8 +118,11 @@ class Session {
     return $this->clients[$arrk[$resk]];
   }
 
-  public function notifyAll(string $msg) {
+  public function notifyAll(string $msg, ?string $exception = null) {
     foreach ($this->clients as $c) {
+      if ($exception && $exception == $this->createConnIdString($c)) {
+        continue;
+      }
       $c->send($msg);
     }
   }

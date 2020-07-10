@@ -257,10 +257,10 @@ class Controller implements MessageComponentInterface {
     }
 
     $s = $this->sessions->get($ssid);
-    $m = NyanCodes::encodeMsg([
-      'event' => $msg,
-      'params' => [],
-    ]);
-    $s->notifyAll($m);
+    // $m = NyanCodes::encodeMsg([
+    //   'event' => $msg,
+    //   'params' => [],
+    // ]);
+    $s->notifyAll($msg, $this->createConnIdString($owner));
   }
 }
