@@ -205,14 +205,18 @@ function NyanServer(runner) {
 
     if (this.nyanner.paused) {
       this.nyanner.paused = false;
+      if (this.primary)
+        this.conn.send('pu');
       this.nyanner.unpause();
     } else {
       if (this.nyanner.status === 'idle') {
         this.nyanner.init();
-      } else if (this.nyanner.status === 'waiting') {
-        this.nyanner.startRunning(true);
+      // } else if (this.nyanner.status === 'waiting') {
+      //   this.nyanner.startRunning(true);
       } else {
         this.nyanner.pause();
+        if (this.primary)
+          this.conn.send('pp');
         this.nyanner.paused = true;
       }
     }

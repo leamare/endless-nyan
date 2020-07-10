@@ -90,7 +90,8 @@ function Nyanner(elem, server, map) {
     if (fade) {
       this.audio.fade(0, this.maxvol, this.timer * (50 / this.speed));
     } else { 
-      this.audio.play();
+      if (this.moveTimer !== -1) 
+        this.audio.play();
     }
     this.srv.event('running'); // set timing for all clients
     this.status = 'running';
@@ -98,6 +99,8 @@ function Nyanner(elem, server, map) {
   }
 
   this.stopNyan = () => {
+    if (this.beginAudio)
+      this.beginAudio.stop();
     this.audio.stop();
     this.stopMovement();
   }
@@ -132,6 +135,7 @@ function Nyanner(elem, server, map) {
 
   this.pause = () => {
     if (this.moveTimer) {
+      this.audio.pause();
       clearInterval(this.moveTimer);
       this.moveTimer = -1;
     }
@@ -139,6 +143,7 @@ function Nyanner(elem, server, map) {
 
   this.unpause = () => {
     if (this.moveTimer === -1) {
+      this.audio.play();
       this.moveTimer = setInterval(
         runnerFunc,
         this.timer
