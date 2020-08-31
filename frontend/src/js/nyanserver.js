@@ -27,14 +27,15 @@ function NyanServer(runner) {
     }
   }
 
-  this.updateSettings = (params) => {
+  this.updateSettings = (params, force = false) => {
     //console.log(params);
-    if (this.type !== params[0]) {
+    if (this.type !== params[0] && (this.primary === undefined || this.primary || force)) {
       this.container.classList.remove(`${this.type}-cat`);
       this.type = params[0];
       localStorage.runner = this.type;
       this.container.classList.add(`${this.type}-cat`);
-      this.sendSync();
+      if (this.primary !== undefined && this.primary)
+        this.sendSync();
       if (this.nyanner)
         this.nyanner.updateNyanner();
     }
@@ -101,7 +102,8 @@ function NyanServer(runner) {
     // session settings update
     if (evt.data.indexOf('su') === 0) {
       let params = evt.data.split(':');
-      this.updateSettings( params.slice(1) );
+      console.log(params);
+      this.updateSettings( params.slice(1), true );
     }
     // session terminated
     if (evt.data.indexOf('se') === 0) {
@@ -180,7 +182,7 @@ function NyanServer(runner) {
 
   this.sync = (time, params) => {
     this.nyanner.audio.seek(time+.01);
-    this.updateSettings(params);
+    this.updateSettings(params, true);
   }
 
   this.startMovement = () => {
@@ -222,5 +224,5 @@ function NyanServer(runner) {
     }
   }
 
-  this.updateSettings([ runner ]);
+  this.updateSettings([ runner ], true);
 }

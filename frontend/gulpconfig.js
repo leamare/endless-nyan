@@ -3,7 +3,7 @@
 let config  = require('./config.json');
 
 const __BUILDID__ = (+new Date).toString(36),
-      __VERSION__ = '2.2.0',
+      __VERSION__ = '2.2.1',
       __NYANSRV__ = config.srv;
 
 var src   = './src/',
