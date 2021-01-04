@@ -1,0 +1,48 @@
+.dalek-cat, .dalek2-cat {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  background-size: 50vh;
+  animation: bgScrollRight 10s linear infinite;
+}
+.dalek-cat {
+  background-image: url('assets/dalek/bg.png');
+}
+.dalek2-cat {
+  background-image: url('assets/dalek/bg_gold.png');
+}
+
+.dalek-cat .nyanner, .dalek2-cat .nyanner {
+  top: 50%;
+  left: calc(-50vw + 9vh);
+}
+
+
+.dalek-cat .runner {
+  background-image: url('assets/dalek/dalek.png');
+  height: 26vh;
+  width: 21vh;
+}
+.dalek2-cat .runner {
+  background-image: url('assets/dalek/dalek_gold.png');
+  height: 26vh;
+  width: 18vh;
+}
+.dalek-cat .runner, .dalek2-cat .runner {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  animation: dalekCatAnim 1.2s linear infinite;
+}
+
+.dalek-cat .trail, .dalek2-cat .trail {
+  display: none;
+}
+
+@keyframes dalekCatAnim {
+  0% {margin-right: 0; margin-top: -.75vh;}
+  25% {margin-right: 0;}
+  50% {margin-right: 0; margin-top: .75vh;}
+  75% {margin-right: 0;}
+  100% {margin-right: 0; margin-top: -.75vh;}
+}
