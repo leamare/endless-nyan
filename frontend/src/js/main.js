@@ -32,6 +32,12 @@ const nyanmap = {
   'courier': {
     loop:  'assets/courier/music.mp3'
   },
+  'dalek': {
+    loop:  'assets/dalek/dalek.mp3'
+  },
+  'dalek2': {
+    loop:  'assets/dalek/dalek.mp3'
+  },
 };
 
 let hash = location.hash.substr(1);
